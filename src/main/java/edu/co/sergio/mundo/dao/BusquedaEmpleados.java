@@ -5,7 +5,7 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import edu.co.sergio.mundo.vo.Empleado;
+import Modelo.Empleado;
 import edu.co.sergio.mundo.dao.EmpleadosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;

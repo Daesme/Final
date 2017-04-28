@@ -5,7 +5,6 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import edu.co.sergio.mundo.vo.Producto;
 import edu.co.sergio.mundo.vo.Provedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -5,7 +5,7 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import edu.co.sergio.mundo.vo.Empleado;
+import Modelo.Empleado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +14,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import edu.co.sergio.mundo.dao.Conexion;
 import java.net.URISyntaxException;
 
 /**
