@@ -6,7 +6,6 @@
 package edu.co.sergio.mundo.dao;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,7 +51,7 @@ public class RecuperarContraseña extends HttpServlet {
         
         try {
             String nombre = request.getParameter("Usuario");
-            int contra = Integer.valueOf(request.getParameter("RecuperarContraseÃ±a"));
+            int contra = Integer.valueOf(request.getParameter("RecuperarContraseña"));
             
             UsuariosDAO usu = new UsuariosDAO();
             
