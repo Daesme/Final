@@ -1,4 +1,3 @@
-import edu.co.sergio.mundo.dao.CreateDataBase;
 import java.io.File;
 import org.glassfish.embeddable.CommandResult;
 import org.glassfish.embeddable.CommandRunner;
@@ -36,7 +35,6 @@ public class MainGlassfish {
       
         
         //Invocando el Script de Creacion de la base de datos.
-        CreateDataBase.run();
 	// Create a scattered web application.
 	ScatteredArchive archive = new ScatteredArchive("myApp",
 	ScatteredArchive.Type.WAR, new File(webappDirLocation));
