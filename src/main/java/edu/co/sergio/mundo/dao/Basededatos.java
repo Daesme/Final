@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package edu.co.sergio.mundo.dao;
 
 import java.util.List;
 

@@ -2,47 +2,47 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>Ejemplo</servlet-name>
-        <servlet-class>Controlador.productos</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.productos</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BusquedaEmpleados</servlet-name>
-        <servlet-class>Controlador.BusquedaEmpleados</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.BusquedaEmpleados</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BusquedaProductos</servlet-name>
-        <servlet-class>Controlador.BusquedaProductos</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.BusquedaProductos</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BusquedaProvedores</servlet-name>
-        <servlet-class>Controlador.BusquedaProvedores</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.BusquedaProvedores</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>empleados</servlet-name>
-        <servlet-class>Controlador.empleados</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.empleados</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>productos</servlet-name>
-        <servlet-class>Controlador.productos</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.productos</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>provedores</servlet-name>
-        <servlet-class>Controlador.provedores</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.provedores</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ventas</servlet-name>
-        <servlet-class>Controlador.ventas</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.ventas</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>InicioSesiones</servlet-name>
-        <servlet-class>Controlador.InicioSesiones</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.InicioSesiones</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreacionUsuario</servlet-name>
-        <servlet-class>Controlador.CreacionUsuario</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.CreacionUsuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RecuperarContraseña</servlet-name>
-        <servlet-class>Controlador.RecuperarContraseña</servlet-class>
+        <servlet-class>edu.co.sergio.mundo.dao.RecuperarContraseña</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Ejemplo</servlet-name>

@@ -1,4 +1,4 @@
-package Controlador;
+package edu.co.sergio.mundo.dao;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;

@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package edu.co.sergio.mundo.dao;
 
-import edu.co.sergio.mundo.vo.Producto;
-import edu.co.sergio.mundo.vo.Provedor;
+import edu.co.sergio.mundo.vo.Empleado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,46 +14,46 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Controlador.Conexion;
+import edu.co.sergio.mundo.dao.Conexion;
 import java.net.URISyntaxException;
 
 /**
  *
  * @author crist
  */
-public class ProvedorDAO {
+public class EmpleadosDAO {
 
-    private final Connection conexion;
+    private Connection conexion;
 
-    public ProvedorDAO() throws URISyntaxException {
-        this.conexion = Conexion.getConnection();
+    public EmpleadosDAO() throws URISyntaxException {
+        this.conexion  = Conexion.getConnection();       
     }
 
-    public void Insetar(int idP, String Nombre, String apellido, int tel) throws SQLException {
+    public void Insetar(int idP, String Nombre, int apellido, int tel) throws SQLException {
 
-        String query = " insert into Proveedor (idProvedor,ProvedorName,ProveedorAp,tel)"
+        try {
+        String query = " insert into Empleado (idEmpleado,empleadoName,duracion,pago)"
                 + " values (?, ?, ?, ?)";
 
         PreparedStatement statement= this.conexion.prepareStatement(query);
 
-        try {
+        
             statement.setInt(1, idP);
             statement.setString(2, Nombre);
-            statement.setString(3, apellido);
+            statement.setInt(3, apellido);
             statement.setInt(4, tel);
             statement.execute();
-             statement.execute();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
     }
 
-    public LinkedList<Provedor> Listar() {
+    public LinkedList<Empleado> Listar() {
 
-        LinkedList<Provedor> a = new LinkedList<Provedor>();
+        LinkedList<Empleado> a = new LinkedList<Empleado>();
 
-        String query = "SELECT * FROM Proveedor";
+        String query = "SELECT * FROM Empleado";
 
         try {
            Statement statement =
@@ -64,12 +63,12 @@ public class ProvedorDAO {
                     statement.executeQuery(query);
 
             while (rs.next()) {
-                int codigoProveedor = rs.getInt("idProvedor");
-                String Nombre = rs.getString("ProvedorName");
-                String Apellido = rs.getString("ProveedorAp");
-                int tel = rs.getInt("tel");
+                int codigoProducto = rs.getInt("idEmpleado");
+                String descripcion = rs.getString("empleadoName");
+                int cantidad = rs.getInt("duracion");
+                int tel = rs.getInt("pago");
 
-                Provedor pro = new Provedor(codigoProveedor, Nombre, Apellido, tel);
+                Empleado pro = new Empleado(codigoProducto, descripcion, cantidad, tel);
                 a.add(pro);
             }
             System.out.println(a);
@@ -78,15 +77,17 @@ public class ProvedorDAO {
             System.out.println("Failed to make update!");
             e.printStackTrace();
         }
+
         return a;
     }
 
     public void Borrar(int id) {
         try {
-            String query = "delete from Proveedor where idProvedor = ?";
+            String query = "delete from Empleado where idEmpleado = ?";
             
             PreparedStatement statement
                 = this.conexion.prepareStatement(query);
+            
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException e) {
@@ -95,26 +96,29 @@ public class ProvedorDAO {
         }
     }
 
-    public Provedor Buscar(int id) {
-        Provedor pro = null;
+    public Empleado Buscar(int id) {
+        Empleado pro = null;
+
         try {
-            String query = "SELECT * FROM Proveedor where idProvedor = ?";
+            String query = "SELECT * FROM Empleado where idEmpleado = ?";
             PreparedStatement statement
                 = this.conexion.prepareStatement(query);
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                int codigoProveedor = rs.getInt("idProvedor");
-                String Nombre = rs.getString("ProvedorName");
-                String Apellido = rs.getString("ProveedorAp");
-                int tel = rs.getInt("tel");
-                pro = new Provedor(codigoProveedor, Nombre, Apellido, tel);
+                int codigoProveedor = rs.getInt("idEmpleado");
+                String Nombre = rs.getString("empleadoName");
+                int Apellido = rs.getInt("duracion");
+                int tel = rs.getInt("pago");
+                pro = new Empleado(codigoProveedor, Nombre, Apellido, tel);
             }
 
         } catch (Exception ex) {
-             Logger.getLogger(ProvedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(EmpleadosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pro;
     }
+
 }
+

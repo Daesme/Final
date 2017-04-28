@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package edu.co.sergio.mundo.dao;
 
-import edu.co.sergio.mundo.vo.Producto;
+import edu.co.sergio.mundo.vo.Provedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,8 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Labing
  */
-public class productos extends HttpServlet {
+public class BusquedaProvedores extends HttpServlet {
 
+    ProvedorDAO dao;
+    Provedor pro;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,9 +35,21 @@ public class productos extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
+            throws ServletException, IOException {
+        try {
+            response.setContentType("text/html;charset=UTF-8");
             /* TODO output your page here. You may use following sample code. */
+            int id = Integer.valueOf(request.getParameter("id"));
+            dao=new ProvedorDAO();
+            pro = dao.Buscar(id);
+            
+            RequestDispatcher dispacher =request.getRequestDispatcher("BusquedaProvedor.jsp");
+            request.setAttribute("provedor", pro);
+            dispacher.forward(request, response);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(BusquedaProvedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,23 +64,7 @@ public class productos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            int id = Integer.valueOf(request.getParameter("id"));
-            String nombre2 = request.getParameter("Descripcion");
-            int cantidad = Integer.valueOf(request.getParameter("Cantidad"));
-            int valor = Integer.valueOf(request.getParameter("Precio"));
-            
-            /* TODO output your page here. You may use following sample code. */
-            ProductosDAO s = new ProductosDAO();
-            try {
-                s.Insetar(id, nombre2, cantidad, valor);
-                response.sendRedirect("Ingresodeproductos.html");
-            } catch (SQLException ex) {
-                Logger.getLogger(productos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(productos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -82,16 +78,7 @@ public class productos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        try {
-            int codigo = Integer.valueOf(request.getParameter("idproductos"));
-            ProductosDAO c = new ProductosDAO();
-            c.Borrar(codigo);
-            response.sendRedirect("BorrarProducto.html");
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(productos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        processRequest(request, response);
     }
 
     /**
@@ -103,5 +90,4 @@ public class productos extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

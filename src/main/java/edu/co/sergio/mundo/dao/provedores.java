@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package edu.co.sergio.mundo.dao;
 
-import edu.co.sergio.mundo.vo.Empleado;
-import Controlador.EmpleadosDAO;
+import edu.co.sergio.mundo.vo.Provedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Labing
  */
-public class BusquedaEmpleados extends HttpServlet {
-    
-    Empleado emp;
-    EmpleadosDAO empDAO;
+public class provedores extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,26 +32,11 @@ public class BusquedaEmpleados extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-                     
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
             /* TODO output your page here. You may use following sample code. */
-            String codigo = request.getParameter("codigo");
-            
-            empDAO = new EmpleadosDAO();
-            emp = empDAO.Buscar(Integer.parseInt(codigo));
-            System.out.println(emp);
-            RequestDispatcher dispacher =request.getRequestDispatcher("BusquedaEmpleado.jsp");
-            request.setAttribute("empleado", emp);
-            dispacher.forward(request, response);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(BusquedaEmpleados.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }
-    
-
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -68,7 +50,23 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            int id = Integer.valueOf(request.getParameter("IDProvedor"));
+            String nombre2 = request.getParameter("NombreProvedor");
+            String apellido2 = request.getParameter("ApellidoProvedor");
+            int tel = Integer.valueOf(request.getParameter("Telefono"));
+            
+            /* TODO output your page here. You may use following sample code. */
+            ProvedorDAO e = new ProvedorDAO();
+            try {
+                e.Insetar(id, nombre2, apellido2, tel);
+                response.sendRedirect("NuevoProvedor.html");
+            } catch (SQLException ex) {
+                Logger.getLogger(provedores.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(provedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -82,7 +80,16 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        try {
+            int idborrar= Integer.valueOf(request.getParameter("idprv"));
+            ProvedorDAO d=new ProvedorDAO();
+            d.Borrar(idborrar);
+            response.sendRedirect("BorrarProvedor.html");
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(provedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
