@@ -1,7 +1,7 @@
 
 
-<%@page import="controlador.EmpleadosDAO"%>
-<%@page import="Modelo.Empleado"%>
+<%@page import="edu.co.sergio.mundo.dao.EmpleadosDAO"%>
+<%@page import="edu.co.sergio.mundo.vo.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">

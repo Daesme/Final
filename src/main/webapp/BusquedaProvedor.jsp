@@ -4,8 +4,8 @@
     Author     : crist
 --%>
 
-<%@page import="Modelo.Provedor"%>
-<%@page import="controlador.ProvedorDAO"%>
+<%@page import="edu.co.sergio.mundo.vo.Provedor"%>
+<%@page import="edu.co.sergio.mundo.dao.ProvedorDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">

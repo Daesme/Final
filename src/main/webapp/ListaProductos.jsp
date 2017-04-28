@@ -1,6 +1,6 @@
-<%@page import="Modelo.Provedor"%>
+<%@page import="edu.co.sergio.mundo.vo.Provedor"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="controlador.ProvedorDAO"%>
+<%@page import="edu.co.sergio.mundo.dao.ProvedorDAO"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <!--
@@ -8,8 +8,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<%@page import="Modelo.Producto"%>
-<%@page import="controlador.ProductosDAO"%>
+<%@page import="edu.co.sergio.mundo.vo.Producto"%>
+<%@page import="edu.co.sergio.mundo.dao.ProductosDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html lang="en">

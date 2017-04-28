@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="java.util.LinkedList"%>
-<%@page import="controlador.ProvedorDAO"%>
+<%@page import="edu.co.sergio.mundo.dao.ProvedorDAO"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <!--
@@ -15,8 +15,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<%@page import="Modelo.Ventas"%>
-<%@page import="controlador.VentasDAO"%>
+<%@page import="edu.co.sergio.mundo.vo.Ventas"%>
+<%@page import="edu.co.sergio.mundo.dao.VentasDAO"%>
 
 
 <html lang="en">

@@ -1,7 +1,7 @@
 
 
-<%@page import="controlador.ProductosDAO"%>
-<%@page import="Modelo.Producto"%>
+<%@page import="edu.co.sergio.mundo.dao.ProductosDAO"%>
+<%@page import="edu.co.sergio.mundo.vo.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
