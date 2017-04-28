@@ -3,27 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.co.sergio.mundo.dao;
+package Controlador;
 
-import edu.co.sergio.mundo.vo.Usuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
- * @author crist
+ * @author user7
  */
-public class InicioSesiones extends HttpServlet {
-
-    
+public class ventas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,22 +50,33 @@ public class InicioSesiones extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         try {
-            String nombre = request.getParameter("uname");
-            int psw = Integer.parseInt(request.getParameter("psw"));
-            UsuariosDAO usu =new UsuariosDAO();
-            Usuarios usuario;
-            usuario = usu.Buscar(nombre);
-            System.out.println(usu);
             
-            if (usuario.getNombre().equals(nombre) && usuario.getClave() == psw) {
-                response.sendRedirect("Principal.html");
-            } else {
-                response.sendRedirect("IngresoUsuarios.jsp");
+            
+            int idF= Integer.valueOf(request.getParameter("IDProvedor"));
+            int idP= Integer.valueOf(request.getParameter("IdProducto"));
+            int idE= Integer.valueOf(request.getParameter("IdEmpleado"));
+            int valor= Integer.valueOf(request.getParameter("Valor"));
+            
+            
+            VentasDAO c=new VentasDAO();
+            try {
+                c.Insetar(idF, idP, idE, valor);
+                response.sendRedirect("NuevaVenta.html");
+            } catch (SQLException ex) {
+                Logger.getLogger(ventas.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+            
         } catch (URISyntaxException ex) {
-            Logger.getLogger(InicioSesiones.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ventas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+                    
+      
     }
 
     /**
@@ -82,6 +91,7 @@ public class InicioSesiones extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**
@@ -95,3 +105,4 @@ public class InicioSesiones extends HttpServlet {
     }// </editor-fold>
 
 }
+

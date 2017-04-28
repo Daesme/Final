@@ -3,26 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.co.sergio.mundo.dao;
+package Controlador;
 
+import edu.co.sergio.mundo.vo.Provedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.RequestDispatcher;
 
 /**
  *
- * @author user7
+ * @author Labing
  */
-public class ventas extends HttpServlet {
+public class BusquedaProvedores extends HttpServlet {
 
+    ProvedorDAO dao;
+    Provedor pro;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,8 +36,20 @@ public class ventas extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        try {
+            response.setContentType("text/html;charset=UTF-8");
             /* TODO output your page here. You may use following sample code. */
+            int id = Integer.valueOf(request.getParameter("id"));
+            dao=new ProvedorDAO();
+            pro = dao.Buscar(id);
+            
+            RequestDispatcher dispacher =request.getRequestDispatcher("BusquedaProvedor.jsp");
+            request.setAttribute("provedor", pro);
+            dispacher.forward(request, response);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(BusquedaProvedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,33 +64,7 @@ public class ventas extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        try {
-            
-            
-            int idF= Integer.valueOf(request.getParameter("IDProvedor"));
-            int idP= Integer.valueOf(request.getParameter("IdProducto"));
-            int idE= Integer.valueOf(request.getParameter("IdEmpleado"));
-            int valor= Integer.valueOf(request.getParameter("Valor"));
-            
-            
-            VentasDAO c=new VentasDAO();
-            try {
-                c.Insetar(idF, idP, idE, valor);
-                response.sendRedirect("NuevaVenta.html");
-            } catch (SQLException ex) {
-                Logger.getLogger(ventas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(ventas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-                    
-      
+        processRequest(request, response);
     }
 
     /**
@@ -91,7 +79,6 @@ public class ventas extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     /**
@@ -103,6 +90,4 @@ public class ventas extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
-

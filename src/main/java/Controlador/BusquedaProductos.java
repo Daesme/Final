@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.co.sergio.mundo.dao;
+package Controlador;
 
+import edu.co.sergio.mundo.vo.Producto;
+import Controlador.ProductosDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author crist
+ * @author Labing
  */
-public class CreacionUsuario extends HttpServlet {
+public class BusquedaProductos extends HttpServlet {
 
+    Producto pro;
+    ProductosDAO c;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,8 +37,23 @@ public class CreacionUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        try {
+            response.setContentType("text/html;charset=UTF-8");
             /* TODO output your page here. You may use following sample code. */
+
+            int codigo = Integer.valueOf(request.getParameter("id"));
+
+            c = new ProductosDAO();
+            pro = c.Buscar(codigo);
+
+            RequestDispatcher dispacher = request.getRequestDispatcher("BusquedaProductos.jsp");
+            request.setAttribute("producto", pro);
+            dispacher.forward(request, response);
+            
+            /* TODO output your page here. You may use following sample code. */
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(BusquedaProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,22 +68,8 @@ public class CreacionUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        try {
-            
-            String nombre = request.getParameter("Usuario");
-            int contra = Integer.valueOf(request.getParameter("Contraseña"));
-            
-            UsuariosDAO usu = new UsuariosDAO();
-            response.sendRedirect("IngresoUsuarios.jsp");
-            try {
-                usu.Insetar(nombre,contra);
-            } catch (SQLException ex) {
-                Logger.getLogger(CreacionUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(CreacionUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
+
     }
 
     /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.co.sergio.mundo.dao;
+package Controlador;
 
 import edu.co.sergio.mundo.vo.Ventas;
 import java.sql.Connection;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-import edu.co.sergio.mundo.dao.Conexion;
+import Controlador.Conexion;
 import java.net.URISyntaxException;
 
 /**

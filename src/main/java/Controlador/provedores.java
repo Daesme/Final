@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.co.sergio.mundo.dao;
+package Controlador;
 
-import edu.co.sergio.mundo.vo.Producto;
+import edu.co.sergio.mundo.vo.Provedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Labing
  */
-public class productos extends HttpServlet {
+public class provedores extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -53,21 +51,21 @@ public class productos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int id = Integer.valueOf(request.getParameter("id"));
-            String nombre2 = request.getParameter("Descripcion");
-            int cantidad = Integer.valueOf(request.getParameter("Cantidad"));
-            int valor = Integer.valueOf(request.getParameter("Precio"));
+            int id = Integer.valueOf(request.getParameter("IDProvedor"));
+            String nombre2 = request.getParameter("NombreProvedor");
+            String apellido2 = request.getParameter("ApellidoProvedor");
+            int tel = Integer.valueOf(request.getParameter("Telefono"));
             
             /* TODO output your page here. You may use following sample code. */
-            ProductosDAO s = new ProductosDAO();
+            ProvedorDAO e = new ProvedorDAO();
             try {
-                s.Insetar(id, nombre2, cantidad, valor);
-                response.sendRedirect("Ingresodeproductos.html");
+                e.Insetar(id, nombre2, apellido2, tel);
+                response.sendRedirect("NuevoProvedor.html");
             } catch (SQLException ex) {
-                Logger.getLogger(productos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(provedores.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (URISyntaxException ex) {
-            Logger.getLogger(productos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(provedores.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -82,14 +80,14 @@ public class productos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         try {
-            int codigo = Integer.valueOf(request.getParameter("idproductos"));
-            ProductosDAO c = new ProductosDAO();
-            c.Borrar(codigo);
-            response.sendRedirect("BorrarProducto.html");
+            int idborrar= Integer.valueOf(request.getParameter("idprv"));
+            ProvedorDAO d=new ProvedorDAO();
+            d.Borrar(idborrar);
+            response.sendRedirect("BorrarProvedor.html");
         } catch (URISyntaxException ex) {
-            Logger.getLogger(productos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(provedores.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
