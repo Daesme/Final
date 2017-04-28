@@ -9,6 +9,9 @@ import edu.co.sergio.mundo.vo.Empleado;
 import edu.co.sergio.mundo.dao.EmpleadosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,9 +37,10 @@ public class BusquedaEmpleados extends HttpServlet {
      */
 protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
-            /* TODO output your page here. You may use following sample code. */         
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+                     
+            /* TODO output your page here. You may use following sample code. */
             String codigo = request.getParameter("codigo");
             
             empDAO = new EmpleadosDAO();
@@ -45,6 +49,9 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             RequestDispatcher dispacher =request.getRequestDispatcher("BusquedaEmpleado.jsp");
             request.setAttribute("empleado", emp);
             dispacher.forward(request, response);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(BusquedaEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     
 
