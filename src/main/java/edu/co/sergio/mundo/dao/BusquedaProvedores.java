@@ -5,7 +5,7 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import Modelo.Provedor;
+import edu.co.sergio.mundo.vo.Provedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;

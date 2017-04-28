@@ -5,7 +5,7 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import Modelo.Usuarios;
+import edu.co.sergio.mundo.vo.Usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

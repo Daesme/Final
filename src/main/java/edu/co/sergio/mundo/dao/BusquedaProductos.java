@@ -5,7 +5,7 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import Modelo.Producto;
+import edu.co.sergio.mundo.vo.Producto;
 import edu.co.sergio.mundo.dao.ProductosDAO;
 import java.io.IOException;
 import java.net.URISyntaxException;

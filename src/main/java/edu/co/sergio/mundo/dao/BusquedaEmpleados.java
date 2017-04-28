@@ -5,7 +5,7 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import Modelo.Empleado;
+import edu.co.sergio.mundo.vo.Empleado;
 import edu.co.sergio.mundo.dao.EmpleadosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,7 +32,6 @@ public class BusquedaEmpleados extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
 protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -62,7 +61,6 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
