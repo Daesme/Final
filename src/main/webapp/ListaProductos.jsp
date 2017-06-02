@@ -317,9 +317,11 @@ and open the template in the editor.
                } 
                    
         %>   
-          </table>      
+          </table>
           <br>
-                    
+                  <button onclick="href('GraficaProducto.html');">Grafica De barras de los productos por su cantidad</button> 
+
+          
                 </form>
     </body>
         <br>
