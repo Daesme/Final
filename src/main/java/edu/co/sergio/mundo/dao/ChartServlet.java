@@ -38,7 +38,7 @@ import org.jfree.data.general.DatasetUtilities;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.TextAnchor;
 
-public class DiagramaProductos extends HttpServlet {
+public class ChartServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -65,7 +65,7 @@ public class DiagramaProductos extends HttpServlet {
 		int height = 350;
 		ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
             } catch (URISyntaxException ex) {
-                Logger.getLogger(DiagramaProductos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChartServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
 		
