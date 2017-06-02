@@ -11,12 +11,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Diagrama de Ventas </title>
 </head>
+<style>
+    .body{                
+                background-color: #FF9900; 
+            }
+    
+    
+</style>
 <h1 align="center"> Ventas </h1>
-<body>
+<body class="body">
         
     <div align="center" style="margin-top: 50px;">
-     
-    <img src="ChartServlet2"  align="center"/>
+     </div>
+    <img src="ChartServlet2"  align="center">
     
 </body>
 </html>
