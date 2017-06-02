@@ -16,7 +16,7 @@
         
     <div align="center" style="margin-top: 50px;">
      
-    <img src="ChartServlet"  align="center"/>
+    <img src="DiagramaProductos"  align="center"/>
     
 </body>
 </html>
