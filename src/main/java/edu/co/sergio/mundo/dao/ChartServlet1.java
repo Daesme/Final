@@ -94,7 +94,7 @@ public class ChartServlet1 extends HttpServlet {
         );
 
         JFreeChart chart = ChartFactory.createBarChart(
-                "Precio", // chart title
+                "Salario", // chart title
                 "Area", // domain axis label
                 "Elementos", // range axis label
                 category, // data

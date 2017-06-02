@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Diagrama de Empleados </title>
 </head>
-<h1 align="center"> Precio </h1>
+<h1 align="center"> Salario </h1>
 <body>
         
     <div align="center" style="margin-top: 50px;">
