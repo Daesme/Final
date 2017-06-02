@@ -319,7 +319,7 @@ and open the template in the editor.
         %>   
           </table>
           <br>
-                  <button onclick="href('GraficaProducto.html');">Grafica De barras de los productos por su cantidad</button> 
+                  <a href="DiagramaProductos.jsp">Grafica De barras de los productos por su cantidad</a> 
 
           
                 </form>
