@@ -45,6 +45,14 @@
         <servlet-class>edu.co.sergio.mundo.dao.ChartServlet</servlet-class>
     </servlet>  
     <servlet>
+        <servlet-name>ChartServlet1</servlet-name>
+        <servlet-class>edu.co.sergio.mundo.dao.ChartServlet1</servlet-class>
+    </servlet>  
+    <servlet>
+        <servlet-name>ChartServlet2</servlet-name>
+        <servlet-class>edu.co.sergio.mundo.dao.ChartServlet2</servlet-class>
+    </servlet>  
+    <servlet>
         <servlet-name>RecuperarContraseña</servlet-name>
         <servlet-class>edu.co.sergio.mundo.dao.RecuperarContraseña</servlet-class>
     </servlet>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>ChartServlet</servlet-name>
         <url-pattern>/ChartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChartServlet1</servlet-name>
+        <url-pattern>/ChartServlet1</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ChartServlet2</servlet-name>
+        <url-pattern>/ChartServlet2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

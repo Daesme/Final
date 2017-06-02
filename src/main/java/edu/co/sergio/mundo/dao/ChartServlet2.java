@@ -7,6 +7,7 @@ package edu.co.sergio.mundo.dao;
 
 
 import edu.co.sergio.mundo.vo.Producto;
+import edu.co.sergio.mundo.vo.Ventas;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Paint;
@@ -38,7 +39,7 @@ import org.jfree.data.general.DatasetUtilities;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.TextAnchor;
 
-public class ChartServlet extends HttpServlet {
+public class ChartServlet2 extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -65,7 +66,7 @@ public class ChartServlet extends HttpServlet {
 		int height = 350;
 		ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
             } catch (URISyntaxException ex) {
-                Logger.getLogger(ChartServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChartServlet2.class.getName()).log(Level.SEVERE, null, ex);
             }
             
 		
@@ -76,13 +77,13 @@ public class ChartServlet extends HttpServlet {
         
     public JFreeChart getChart() throws URISyntaxException {
 
-        List<Producto> arr = new LinkedList();
-       ProductosDAO pr = new ProductosDAO();
+        List<Ventas> arr = new LinkedList();
+       VentasDAO pr = new VentasDAO();
         arr = pr.Listar();
         double[][] data = new double[1][arr.size()];
         int j=0;
         for (int i = 0; i < arr.size(); i++) {
-            data[0][j] = arr.get(i).getCantidad() ;
+            data[0][j] = arr.get(i).getValor() ;
             j++;
         }
 
