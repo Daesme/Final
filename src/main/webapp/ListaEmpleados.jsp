@@ -318,7 +318,9 @@ and open the template in the editor.
                } 
                    
         %>   
-          </table>      
+          </table>
+                            <a href="DiagramaEmpleados.jsp">Grafica De barras de los productos por su cantidad</a> 
+
           <br>
                     
                 </form>

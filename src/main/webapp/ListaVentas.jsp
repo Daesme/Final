@@ -328,6 +328,8 @@ and open the template in the editor.
                    
         %>      
           </table>
+                          <a href="DiagramaVentas.jsp">Grafica De barras de los  por  Venta</a> 
+
                     
                 </form>
     </body>

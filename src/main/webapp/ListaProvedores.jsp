@@ -317,7 +317,7 @@ and open the template in the editor.
                         }
 
                     %>   
-                </table>      
+                </table>
                 <br>
 
             </form>
