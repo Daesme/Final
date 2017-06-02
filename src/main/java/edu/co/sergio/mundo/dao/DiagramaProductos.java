@@ -82,7 +82,7 @@ public class DiagramaProductos extends HttpServlet {
         double[][] data = new double[1][arr.size()];
         int j=0;
         for (int i = 0; i < arr.size(); i++) {
-            data[0][j] = 1+i;
+            data[0][j] = arr.get(i).getCantidad() ;
             j++;
         }
 
